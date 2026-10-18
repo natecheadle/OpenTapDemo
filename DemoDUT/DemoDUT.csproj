@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <OpenTapSetAssemblyVersion>gitversion</OpenTapSetAssemblyVersion>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <TargetFramework>net9</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Demo</RootNamespace>
+    <NoWarn>$(NoWarn);MSB3277;MSB3243</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OpenTapPackageDefinitionPath>package.xml</OpenTapPackageDefinitionPath>
+    <CreateOpenTapPackage>false</CreateOpenTapPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <CreateOpenTapPackage>true</CreateOpenTapPackage>
+  </PropertyGroup>
+  <!-- Fall back to the Git version when OpenTapVersion is not provided by a
+       Directory.Build.props (e.g. when this project is not part of a solution
+       created from the OpenTAP solution template). Can be removed if
+       OpenTapVersion is always inherited from Directory.Build.props. -->
+  <PropertyGroup Condition="'$(OpenTapVersion)' == ''">
+    <OpenTapVersion>9.35.0+a6e39207</OpenTapVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenTAP" Version="$(OpenTapVersion)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <OpenTapPackageReference Include="Editor" />
+  </ItemGroup>
+</Project>

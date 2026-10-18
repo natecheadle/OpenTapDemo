@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan type="OpenTap.TestPlan">
+  <OpenTap.Mixins>
+    <Number type="OpenTap.NumberMixinBuilder">
+      <Name>Number</Name>
+      <Options>0</Options>
+      <Unit>s</Unit>
+    </Number>
+  </OpenTap.Mixins>
+  <Steps>
+    <TestStep type="OpenTap.Plugins.BasicSteps.DelayStep" Id="9525f52e-0193-4a4c-8075-5ea83bab9e1c">
+      <DelaySecs>1</DelaySecs>
+      <Name Metadata="Step Name">Delay</Name>
+      <ChildTestSteps />
+    </TestStep>
+    <TestStep type="OpenTap.Plugins.BasicSteps.ParallelStep" Id="b88899ef-b92d-45df-83b6-580c93dc07be" OpenTap.Visibility="Visible">
+      <Name Metadata="Step Name">Parallel</Name>
+      <ChildTestSteps>
+        <TestStep type="Demo.MyTestStep" Id="7c35a786-cf10-477d-90e7-7fe71a182c3d">
+          <DUT type="Demo.MyDUT" Source="OpenTap.DutSettings">MyDUT</DUT>
+          <Name Metadata="Step Name">MyTestStep</Name>
+          <ChildTestSteps />
+        </TestStep>
+        <TestStep type="Demo.MyTestStep" Id="4ba4920c-8c24-438d-9344-587647978ca8">
+          <DUT type="Demo.MyDUT" Source="OpenTap.DutSettings">MyDUT1</DUT>
+          <Name Metadata="Step Name">MyTestStep</Name>
+          <ChildTestSteps />
+        </TestStep>
+        <TestStep type="Demo.MyTestStep" Id="d879d685-9cbd-4bb5-ac91-238ae7df4210">
+          <DUT type="Demo.MyDUT" Source="OpenTap.DutSettings">MyDUT2</DUT>
+          <Name Metadata="Step Name">MyTestStep</Name>
+          <ChildTestSteps />
+        </TestStep>
+      </ChildTestSteps>
+    </TestStep>
+    <TestStep type="OpenTap.Plugins.BasicSteps.DelayStep" Id="a11f45c2-21c4-41b1-90b8-1a4e03d1876d">
+      <DelaySecs>0.1</DelaySecs>
+      <Name Metadata="Step Name">Delay</Name>
+      <ChildTestSteps />
+    </TestStep>
+  </Steps>
+  <Number>0</Number>
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="^9.35.0+a6e39207" />
+    <Package Name="Expressions" Version="^1.7.1+e0dbf00d" />
+  </Package.Dependencies>
+</TestPlan>
